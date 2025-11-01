@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crust&Crave - Where Every Bite is a Delight</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Causten Round Extra Bold', sans-serif;
+            background-color: #e9c008;
+            color: #fff;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ecda89 0%, #000000 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #f5d76e, #2c2c2c);
+  padding: 15px 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;   /* centers the logo and text vertically */
+  gap: 10px;             /* space between logo and text */
+}
+
+.logo-img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.logo span {
+  font-size: 26px;
+  font-weight: bold;
+  color: #000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
+
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links  {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+            
+        }
+        .nav-links a {   
+            background: linear-gradient(135deg, #d8aa15 0%, #d8aa15 100%);
+            padding: 15px 20px;
+            border-radius: 10px;
+            
+        }
+        .nav-card:hover a {
+            transform: translateY(-5px);
+        }
+
+        .nav-icon h3 {
+            font-size: 60px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .nav-links a:hover {
+            color: #000000;
+        }
+
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .slide-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .slide-text h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .slide-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #e6aa08;
+            color: #000000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bolder;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #000000;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #e9ae0b;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: #000000;
+        }
+
+        .slide-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .slide-image img {
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active {
+            background-color: #d39612;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 20px;
+             color: #000000;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .social-section {
+              font-size: 20px;
+             color: #e0e0e0;
+            background: linear-gradient(135deg, #d8aa15 0%, #d8aa15 100%);
+            padding: 60px 40px;
+            border-radius: 10px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .social-card {
+            text-align: center;
+            padding: 30px;
+            background: #554204;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icon {
+            font-size: 60px;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .social-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .social-card a {
+            color: #242323;
+            text-decoration: none;
+        }
+    
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #504304 0%, #f7df0b 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 5px solid rgb(105, 72, 0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #f8f8f8;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .product-price {
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .product-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.1);
+}
+
+.product-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  color: white;
+  padding: 20px;
+  text-align: left;
+}
+
+.product-overlay h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.product-overlay .product-price {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.product-overlay .btn {
+  background-color: #f1c232;
+  color: #000;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.product-overlay .btn:hover {
+  background-color: #d4a017;
+}
+
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .contact-details ul {
+            list-style: none;
+            font-size: 22px;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .contact-details li {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .contact-details strong {
+            color: #000000;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #3a0a0a 0%, #2a0a0a 100%);
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+        }
+
+        .close {
+            color: #000000;
+            float: right;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 30px;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        .modal-body {
+            margin-top: 20px;
+        }
+
+        .modal-body h3 {
+            color: #dddddd;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .modal-body p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #977d07 0%, #e6a904 100%);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #000000;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .slide-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .slide-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .about-content, .contact-grid, .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+  <div class="logo">
+      <img src="C:\Users\admin\Desktop\Web\images\mypie.png" style="width: 75px; height: 75px; object-fit: contain; border-radius: 5%;" class="logo-img">
+      <span>Crust&Crave</span>
+  </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About us</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#social">Follow us</a></li>
+                <li><a href="#contact">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="slider">
+        <div class="slide active" style="background: linear-gradient(135deg, #ffc505 0%, #313131 100%);">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <h2>Welcome to Crust & Crave</h2>
+                    <p>Handcrafted pies made with passion. We bring the comfort of home-baked goodness right to your table, with accessible online ordering for everyone.</p>
+                    <a href="#products" class="btn">View Our Products</a>
+                </div>
+                <div class="slide-image">
+                    <div style="width: 400px; height: 400px; background: linear-gradient(45deg, #eeeeee, #ffc609); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 120px;"><img src="C:\Users\admin\Desktop\Web\images\mypie.png"></div>
+                  
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" style="background: linear-gradient(135deg, #cdd194d7 0%, #2a270a 100%);">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <h2>Customer Favorites</h2>
+                    <p>Baked Jackfruit Macapuno Pie leads with 70% of orders, Fried Jackfruit Macapuno Pie at 30%. Discover why our customers can't get enough of these delicious creations!</p>
+                  
+                </div>
+                <div class="slide-image">
+                    <div style="width: 400px; height: 400px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 120px;"><img src="C:\Users\admin\Desktop\Web\images\pie.png"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide" style="background: linear-gradient(135deg, #a8a7a4d7 0%, #b19105c7 100%);">
+            <div class="slide-content">
+                <div class="slide-text">
+                    <h2>Bringing families closer, one pie at a time.</h2>
+                    <p>There’s nothing sweeter than sharing a warm slice of Crust & Crave’s Jackfruit Macapuno Pie with the ones you love. Freshly baked, perfectly shared.</p>
+                   
+                </div>
+                <div class="slide-image">
+                    <div style="width: 400px; height: 400px; background: linear-gradient(45deg, #d4920394, #bd8c05a9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 120px;"><img src="C:\Users\admin\Desktop\Web\images\fam.png"></div>
+                </div>
+            </div>l
+        </div>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Crust & Crave is a small bakery that loves making sweet and tasty treats. Our special product is the Jackfruit Macapuno Pie, made with fresh jackfruit, creamy macapuno, and a golden, flaky crust.</p>
+                <p>Every pie is baked with love to give you the perfect mix of flavor and sweetness. We believe that good food makes people happy and at Crust & Crave, we’re here to satisfy your cravings ỉn every slice.</p>
+                <p>Crust made with care, cravings fulfilled.</p>
+            </div>
+            <div>
+                <div style="width: 100%; height: 400px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 150px;"><img src="C:\Users\admin\Desktop\Web\images\babe.png"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="social" class="social-section">
+        <h2>Follow Our Journey</h2>
+        <p>Stay updated on new seasonal flavors, special offers, and behind-the-scenes baking fun by following us on social media!</p>
+        
+        <div class="social-grid">
+            <div class="social-card">
+                <div class="social-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" width="70">
+                </div>
+                <h3>Facebook</h3>
+                <p>Connect with us on Facebook for daily updates and photos!</p>
+                <a href="https://www.facebook.com/profile.php?id=61566639032925" target="_blank" class="btn" style="margin-top: 15px;">Visit Facebook</a>
+            </div>
+
+            <div class="social-card">
+                <div class="social-icon">
+                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" width="70">
+                </div>
+                <h3>Instagram</h3>
+                <p>See our latest creations and beautiful pie photography.</p>
+                <a href="https://www.instagram.com/ccrave_05?igsh=dGE1aHY4MjVsaG9k" blank" class="btn" style="margin-top: 15px;">Visit Instagram</a>
+            </div>
+
+            <div class="social-card">
+                <div class="social-icon">
+                     <img src="data:image/png;base64,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" alt="TikTok Logo" width="70">
+
+                </div>
+                <h3>Tiktok</h3>
+                <p>Quick announcements and customer interactions.</p>
+                <a href="https://www.tiktok.com/@crust.crave?_r=1&_t=ZS-910Zx5nfO1A target="_blank" class="btn" style="margin-top: 15px;">Visit Tiktok</a>
+
+        </div>
+    </section>
+
+    <section id="products">
+        <h2>Our Delicious Menu</h2>
+        <h2 style="font-size: 20px; color: #fffdfd; font-weight:normal; " >Our handcrafted selection of pies, each made with love and the finest ingredients.</h2>
+        <div class="font-size: 20px"></div>
+
+        <div class="products-grid">
+    <!-- Jackfruit Macapuno Pie -->
+    <div class="product-card" onclick="openModal('apple')">
+        <div class="product-image">
+            <img src="C:\Users\admin\Desktop\Web\images\bake.png" alt="Jackfruit Macapuno Pie">
+        </div>
+        <div class="product-info">
+            <h3>Jackfruit Macapuno Pie</h3>
+            <p class="product-price">₱249.00</p>
+            <p>Whole baked Jackfruit Macapuno Pie</p>
+            <a href="#" class="btn" style="margin-top: 10px; display: inline-block;">View Details</a>
+        </div>
+    </div>
+
+    <!-- Fried Jackfruit Macapuno Pie -->
+    <div class="product-card" onclick="openModal('chocolate')">
+        <div class="product-image">
+            <img src="C:\Users\admin\Desktop\Web\images\fried.png" alt="Fried Jackfruit Macapuno Pie">
+        </div>
+        <div class="product-info">
+            <h3>Fried Jackfruit Macapuno Pie</h3>
+            <p class="product-price">₱39.00</p>
+            <p>Crunchy and flaky fried Jackfruit Macapuno Pie</p>
+            <a href="#" class="btn" style="margin-top: 10px; display: inline-block;">View Details</a>
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <section id="contact">
+        <h2>Get in Touch with Crust & Crave</h2>
+        <h2 style="font-size: 20px; color: #fffdfd; font-weight:normal; " >Have a question about an order or need a custom pie? We're here to help! Connect with us through phone, email, or social media.</h2>
+
+        <div class="contact-grid">
+            <div class="contact-details">
+                <h3 style="color:  #000000; font-size: 28px; margin-top: 30px;">Contact Details</h3>
+                <ul>
+    
+                    <li><strong>Phone:</strong> 09943985732 / 09940578075</li>
+                    <li><strong>Email:</strong> crustandcrave05@gmail.com</li>
+                    <li><strong>Address:</strong> Brgy. Trapiche 1, Tanauan City Batangas</li>
+                    <li><strong>Hours:</strong> Mon - Sat, 8 AM - 5 PM</li>
+                </ul>
+                <p style="margin-top: 30px; font-size: 20px;">We aim to respond to all inquiries within 24 hours during business days.</p>
+            </div>
+            <div>
+            <div style="width: 100%; height: 400px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 150px;"><img src="C:\Users\admin\Desktop\Web\images\contact.png" style="width: 100%; height: 120%;"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Crust & Crave. All rights reserved.</p>
+        <p class="tagline">Where Every Bite is a Delight.</p>
+    </footer>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            if (n >= slides.length) currentSlideIndex = 0;
+            if (n < 0) currentSlideIndex = slides.length - 1;
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        function currentSlide(n) {
+            currentSlideIndex = n;
+            showSlide(currentSlideIndex);
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        setInterval(nextSlide, 5000);
+
+        const products = {
+            apple: {
+                name: 'Jackfruit Macapuno Pie',
+                price: '₱249.00',
+                description: '"Our Jackfruit Macapuno Pie is a unique take on classic Filipino pies like buko pie and egg pie. The product, which takes inspiration from these well-known classics, offers a unique twist on a traditional pastry by perfectly blending the sweet flavors of jackfruit and coconut sport, or "macapuno".',
+                ingredients: ['Jackfruit Macapuno Pie (Baked)', 'All Purpose Flour', 'Butter', 'Sugar, Powdered Milk','Macapuno', 'Jackfruit', 'Cornstarch', 'Egg', 'Salt'],
+                
+                special: 'Best served warm, keep refregirated.'
+            },
+            chocolate: {
+                name: 'Fried Jackfruit Macapuno Pie',
+                price: '₱39.00',
+                description: ' Crust & Crave also offers Jackfruit Macapuno Pie that is deeply fried aside from baked. This is due to some customers who prefer the crispy, flaky and golden-brown crust of a fried pie.',
+                ingredients: ['Jackfruit Macapuno Pie (Fried)', 'All Purpose Flour', 'Butter', 'Sugar, Powdered Milk','Macapuno', 'Jackfruit', 'Cornstarch', 'Salt'],
+               
+                special: 'Best served warm for good texture'
+            },
+        };
+
+        function openModal(productId) {
+            const product = products[productId];
+            const modal = document.getElementById('productModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalBody.innerHTML = `
+                <h3>${product.name}</h3>
+                <p class="product-price" style="font-size: 28px; margin-bottom: 20px;">${product.price}</p>
+                <p style="margin-bottom: 20px;">${product.description}</p>
+                
+                <h4 style="color: #ff4444; font-size: 22px; margin-top: 25px; margin-bottom: 15px;">Ingredients:</h4>
+                <ul style="margin-left: 20px;">
+                    ${product.ingredients.map(ing => `<li>${ing}</li>`).join('')}
+                </ul>
+                
+            </div>
+                <p style="margin-top: 15px;"><strong style="color: #ff4444;">Special Note:</strong> ${product.special}</p>
+                <a href="https://www.facebook.com/profile.php?id=61566639032925" target="_blank" class="btn" style="margin-top: 30px; width: 25%;">Order Now</a>
+            </div>
+                
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        window.onclick = function(e) {
+            const modal = document.getElementById('productModal');
+            if (e.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
